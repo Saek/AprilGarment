@@ -1,0 +1,35 @@
+.first-chart-wrapper {
+    width: 1000px; 
+    height: 750px; 
+    margin: auto; 
+    display: relative;
+    margin-top: 70px;
+    background: white;
+ 	padding-left: 20px;
+   	padding-right: 20px;
+   	padding-top: 10px;
+   	padding-bottom: 10px;
+}
+/* .chart-categories {
+	float: right;
+	width: 150px;
+	height: 25px; 
+} */
+.page {
+	background: white;
+}
+.margin-left-15px {
+	margin-left: 15px;
+}
+.margin-left-20px {
+	margin-left: 20px;
+}
+.small-cross {
+	font-size: xx-small;
+    margin-left: 15px;
+    vertical-align: top;
+}
+
+.small-cross:hover {
+	color: black;
+}

@@ -1,0 +1,27 @@
+.header-margin-top {
+	margin-top: 25px;
+}
+
+.panel.panel-baby-blue {
+	border-color: #3a8598;
+    border-style: solid;
+}
+
+.panel-baby-blue .panel-heading {
+	background: #3a8598;
+	color: white;
+}
+
+.margin-top-24px {
+	margin-top: 24px;	
+}
+
+.font-list {
+/* 	font-weight: bold; */
+	color: #464b4c;
+    font-size: 19px;
+}
+
+.list-group-item.item-list-align {
+	padding: 4px 10px;
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="factoryDAO" class="com.testspring.daos.FactoryDAOImpl">
+		<property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory" />
+	</bean>
+	<bean id="clothDAO" class="com.testspring.daos.ClothDAOImpl">
+		<property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory" />
+	</bean>
+	<bean id="storeDAO" class="com.testspring.daos.StoreDAOImpl">
+		<property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory" />
+	</bean>
+	<bean id="clothAndStoreDAO" class="com.testspring.daos.ClothAndStoreDAOImpl">
+		<property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory" />
+	</bean>
+	<bean id="productService" class="com.testspring.services.ProductServiceImpl"> 
+		<property name="factoryDAO" ref="factoryDAO"/>
+		<property name="clothDAO" ref="clothDAO"/>
+		<property name="storeDAO" ref="storeDAO"/>
+		<property name="clothAndStoreDAO" ref="clothAndStoreDAO"/>
+	</bean>
+
+</beans>

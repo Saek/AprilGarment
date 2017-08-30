@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+		
+<!-- 		Heroku PROD -->
+<!-- 		<bean class="java.net.URI" id="dbUrl"> -->
+<!--     		<constructor-arg value="#{systemEnvironment['DATABASE_URL']}"/> -->
+<!-- 		</bean> -->
+		
+<!-- 		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"> -->
+<!-- 		    <property name="url" value="#{ 'jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() }"/> -->
+<!-- 		    <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/> -->
+<!-- 		    <property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/> -->
+<!-- 		</bean> -->
+<!-- 		END Heroku PROD -->
+		
+		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+<!-- 			OLD -->
+<!-- 			<property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
+<!-- 			<property name="url" value="jdbc:mysql://localhost:3306/TestDB" />	 -->
+<!-- 			<property name="username" value="root" /> -->
+<!-- 			<property name="password" value="" /> -->
+			
+<!-- 			NEW -->
+<!-- 			DEV -->
+			<property name="driverClassName" value="org.postgresql.Driver" />
+			<property name="url" value="jdbc:postgresql://ec2-23-21-220-48.compute-1.amazonaws.com:5432/d6dqu4l3kpal1d?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory" />
+			<property name="username" value="vuqawfzvcaajtj" />
+			<property name="password" value="649f5cc6b76c8c483d86d15aa2c9c273a4617c7f1e62ed770853edc1d9eb168b" />
+			<!-- jdbc:postgresql://ec2-23-21-220-48.compute-1.amazonaws.com:5432/d6dqu4l3kpal1d?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory -->
+			
+		</bean>
+		
+		
+		<!-- Hibernate 3 Annotation SessionFactory Bean definition-->
+		<bean id="hibernate3AnnotatedSessionFactory"
+			class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+			<property name="dataSource" ref="dataSource" />
+			<property name="annotatedClasses">
+				<list>
+					<value>com.testspring.models.Person</value>
+					<value>com.testspring.models.Cloth</value>
+					<value>com.testspring.models.Factory</value>
+					<value>com.testspring.models.Sale</value>
+					<value>com.testspring.models.Store</value>
+					<value>com.testspring.models.ClothAndStore</value>
+				</list>
+			</property>
+			<property name="hibernateProperties">
+				<props>
+<!-- 					<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> -->
+					<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+					<prop key="hibernate.show_sql">true</prop>
+				</props>
+			</property>
+		</bean>
+		
+		<!-- person -->
+		<import resource="applicationContext-person.xml" />
+		<import resource="applicationContext-cloth.xml" />
+		<import resource="applicationContext-factory.xml" />
+		<import resource="applicationContext-product.xml" />
+		<import resource="applicationContext-sale.xml" />
+		<import resource="applicationContext-store.xml" />
+		<import resource="applicationContext-clothAndStore.xml" />
+		
+		<tx:annotation-driven transaction-manager="transactionManager"/>
+		<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+			<property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory" />
+		</bean>
+</beans>
