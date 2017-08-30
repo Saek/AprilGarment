@@ -19,7 +19,22 @@
 <!-- 		</bean> -->
 <!-- 		END Heroku PROD -->
 		
-		
+		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+<!-- 			OLD -->
+<!-- 			<property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
+<!-- 			<property name="url" value="jdbc:mysql://localhost:3306/TestDB" />	 -->
+<!-- 			<property name="username" value="root" /> -->
+<!-- 			<property name="password" value="" /> -->
+			
+<!-- 			NEW -->
+<!-- 			DEV -->
+			<property name="driverClassName" value="org.postgresql.Driver" />
+			<property name="url" value="jdbc:postgresql://ec2-23-21-220-48.compute-1.amazonaws.com:5432/d6dqu4l3kpal1d?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory" />
+			<property name="username" value="vuqawfzvcaajtj" />
+			<property name="password" value="649f5cc6b76c8c483d86d15aa2c9c273a4617c7f1e62ed770853edc1d9eb168b" />
+			<!-- jdbc:postgresql://ec2-23-21-220-48.compute-1.amazonaws.com:5432/d6dqu4l3kpal1d?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory -->
+			
+		</bean>
 		
 		
 		<!-- Hibernate 3 Annotation SessionFactory Bean definition-->
