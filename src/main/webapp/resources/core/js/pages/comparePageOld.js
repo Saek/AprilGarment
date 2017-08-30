@@ -386,18 +386,3 @@ function isBtnGraphEnable() {
 		return false;
 	}
 }
-
-//$('#graphForm').validator().on('submit', function (e) {
-//	if (e.isDefaultPrevented()) {
-//    // handle the invalid form...
-//		console.log("#S invalid submit");
-//	} else {
-//    // everything looks good!
-//		console.log("#S submit successfully");
-//		console.log("#S graphForm is submitted");
-//		var labels = getLabels();
-//		console.log("#S labels: ", labels);
-//		selectedYearList
-//		getGraphInfo();
-//	}
-//});

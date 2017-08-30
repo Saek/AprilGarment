@@ -21,7 +21,6 @@
 		
 		
 		
-		
 		<!-- Hibernate 3 Annotation SessionFactory Bean definition-->
 		<bean id="hibernate3AnnotatedSessionFactory"
 			class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
@@ -53,6 +52,7 @@
 		<import resource="applicationContext-sale.xml" />
 		<import resource="applicationContext-store.xml" />
 		<import resource="applicationContext-clothAndStore.xml" />
+		<import resource="applicationContext-compareData.xml" />
 		
 		<tx:annotation-driven transaction-manager="transactionManager"/>
 		<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">

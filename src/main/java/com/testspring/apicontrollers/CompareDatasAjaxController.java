@@ -18,6 +18,7 @@ public class CompareDatasAjaxController {
 	@JsonView(Views.Public.class)
 	@RequestMapping(value="/api/getGraphInfo")
 	public List<GraphInfo> getGraphInfo(@RequestBody CompareDataForm compareDateForm) {
+		System.out.println("#S getGraphInfo!");
 		String[] labels = {"2559", "2560"};
 		int dataArray[][] = {
 				{3, 20, 87, 65, 12, 23, 70, 100, 150, 20, 50, 45},
