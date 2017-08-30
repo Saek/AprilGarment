@@ -140,9 +140,23 @@ function getGraphInfo() {
 		success: function(data) {
 			console.log("#S get data in getGraphInfos: ", data);
 			$('#chartTitle').show();
-			var model = $('#clothModelsDDL option:selected').text();
-			console.log("#S model: ", model);
-			$('#modelName').html(model);
+			var title = $('#titleDDL').val();
+			console.log("#S title: ", title);
+//			<h1 id="chartTitle" style="">
+//				Cloth Model:<span id="modelName">roxie rr12pony</span>
+//			</h1>
+			if(title == "Sales") {
+				$('#chartTitle').html("Sales");
+			}
+			else {
+				var clothModelTitle = "Cloth Model: ";
+				var model = $('#clothModelsDDL option:selected').text();
+				console.log("#S model: ", model);
+				clothModelTitle += model;
+				$('#chartTitle').html(clothModelTitle);
+			}
+			
+//			$('#modelName').html(model);
 			drawGraph(data);
 			hideLoader();
 			
